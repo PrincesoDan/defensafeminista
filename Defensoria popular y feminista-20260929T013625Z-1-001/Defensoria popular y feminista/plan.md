@@ -92,7 +92,7 @@ Que una mujer que llega desde un afiche o desde redes entienda en segundos que l
 
 ## 5. Stack técnico (propuesta)
 
-- **Sitio estático**: HTML + CSS + un poco de JS, o **Astro** si se van a publicar varias jornadas.
+- **Vite** (decidido): HTML + CSS + JS sin framework de interfaz. Proyecto en `web/` en la raíz del repo.
 - Sin base de datos: la jornada vigente vive en un archivo de datos (`jornada.json` o frontmatter) para cambiar fecha y lugar sin tocar el diseño.
 - **Hosting** gratuito o de bajo costo (Vercel, Netlify o GitHub Pages) apuntando a `defensoriafeminista.cl`.
 - Sin cookies ni rastreadores de terceros, por la sensibilidad del público (violencia). Si se mide, usar analítica sin cookies.
@@ -103,43 +103,44 @@ Que una mujer que llega desde un afiche o desde redes entienda en segundos que l
 
 ### Fase 0 · Definiciones
 - [x] Confirmar la fecha de la jornada: sábado 3 de octubre
-- [ ] Confirmar el nombre oficial: "Defensoría Popular Eloísa Zurita" o "Defensoría Popular y Feminista"
-- [ ] Recibir el texto de "Quiénes somos"
+- [x] Confirmar el nombre oficial: "Defensoría Popular Eloísa Zurita" o "Defensoría Popular y Feminista"
+- [ ] Recibir el texto definitivo de "Quiénes somos" (hoy: "abogadas profesionales con vocación social")
 - [ ] Confirmar las tipografías de Canva
-- [ ] Confirmar quién tiene acceso al dominio `defensoriafeminista.cl`
+- [x] Dominio: `defensoriafeminista.cl`
+- [ ] Confirmar quién tiene acceso al dominio para apuntarlo al hosting
 
 ### Fase 1 · Base
-- [ ] Crear el repo y la estructura del proyecto
-- [ ] Tokens de color y tipografía
-- [ ] Vectorizar el retrato y preparar los íconos
-- [ ] Componente `Lockup` (completo, compacto, solo retrato, negativo)
-- [ ] Componente `BotonWhatsApp` (enlace `wa.me` con mensaje precargado)
+- [x] Crear el repo y la estructura del proyecto
+- [x] Tokens de color y tipografía
+- [x] Vectorizar el retrato y preparar los íconos
+- [x] Componente `Lockup` (completo, compacto, solo retrato, negativo)
+- [x] Componente `BotonWhatsApp` (enlace `wa.me` con mensaje precargado)
 
 ### Fase 2 · Navegación
-- [ ] Barra superior de escritorio con el lockup acoplado y estado compacto al hacer scroll
-- [ ] Barra inferior tipo app en celular, con el botón central de WhatsApp
-- [ ] Pestaña activa según la sección visible
+- [x] Barra superior de escritorio con el lockup acoplado y estado compacto al hacer scroll
+- [x] Barra inferior tipo app en celular, con el botón central de WhatsApp
+- [x] Pestaña activa según la sección visible
 
 ### Fase 3 · Secciones
-- [ ] Hero
-- [ ] Qué hacemos
-- [ ] Jornada, que se lee del archivo de datos
-- [ ] Cómo agendar
-- [ ] Quiénes somos (texto provisional hasta recibir el definitivo)
-- [ ] Eloísa Zurita
-- [ ] Pie
+- [x] Hero
+- [x] Qué hacemos
+- [x] Jornada, que se lee del archivo de datos
+- [x] Cómo agendar
+- [x] Quiénes somos: "abogadas profesionales con vocación social" (texto provisional)
+- [x] Eloísa Zurita
+- [x] Pie
 
 ### Fase 4 · Calidad
 - [ ] Accesibilidad: contraste AA, foco visible, `aria-label` en los íconos de la tab bar, textos alternativos
 - [ ] Pruebas en celulares reales (Android de gama baja incluido)
 - [ ] Rendimiento: menos de 200 KB en la primera carga, imágenes en WebP/SVG
-- [ ] Metadatos: título, descripción, imagen OG, favicon
-- [ ] Salida rápida: evaluar un botón "Salir rápido" para quien navega en riesgo de violencia
+- [x] Metadatos: título, descripción, imagen OG, favicon
+- [x] Salida rápida: evaluar un botón "Salir rápido" para quien navega en riesgo de violencia
 
 ### Fase 5 · Publicación
 - [ ] Deploy y conexión del dominio
 - [ ] Probar que el enlace de WhatsApp abra en Android, iPhone y escritorio (WhatsApp Web)
-- [ ] Guía corta para el equipo: cómo cambiar la fecha y el lugar de la próxima jornada
+- [x] Guía corta para el equipo: cómo cambiar la fecha y el lugar de la próxima jornada
 
 ---
 
@@ -158,8 +159,25 @@ Que una mujer que llega desde un afiche o desde redes entienda en segundos que l
 | Tema | Estado |
 |---|---|
 | Fecha de la jornada | ✅ Sábado 3 de octubre |
-| Texto "Quiénes somos" | ⏳ Lo entrega la defensoría |
+| Texto "Quiénes somos" | 🟡 Provisional: abogadas profesionales con vocación social |
 | Tipografías exactas | ⏳ Confirmar en Canva |
-| Nombre oficial | ⏳ Confirmar |
+| Nombre oficial | ✅ Defensoría Popular Eloísa Zurita |
 | Datos en conflicto sobre Eloísa Zurita (lugar de nacimiento, fechas) | ⏳ Revisar antes de publicar la biografía |
-| Stack: HTML plano o Astro | ⏳ Decidir |
+| Stack | ✅ Vite |
+
+---
+
+## 9. Estado de ejecución · 28 sep 2026
+
+Sitio construido en `web/` (ver `web/README.md`). `npm run build` genera `dist/` listo para publicar.
+
+- Barra superior con el lockup acoplado; al bajar queda solo el retrato. Botón "Agenda por WhatsApp" y "Salir rápido".
+- En celular: barra inferior tipo app (Inicio · Servicios · **WhatsApp** · Jornada · Nosotras), con el botón de WhatsApp al centro.
+- Todos los botones abren `wa.me/56956327225` con el mensaje ya escrito para la jornada del sábado 3 de octubre.
+- La jornada se edita en `web/src/data/sitio.json`.
+- Retrato e ilustración en SVG, favicon, ícono de iPhone e imagen para compartir (`og.png`).
+- Fuentes incluidas en el sitio, sin cookies ni analítica.
+- La biografía de Eloísa solo usa los datos en que las fuentes coinciden.
+
+Falta: pruebas en celulares reales, auditoría de accesibilidad, publicación y dominio.
+La primera carga pesa ~215 KB (la meta era 200 KB); se puede bajar recortando las fuentes al alfabeto latino.

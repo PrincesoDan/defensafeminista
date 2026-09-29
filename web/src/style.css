@@ -1,0 +1,279 @@
+/* Sistema visual del dossier brand/eloisa-zurita-dossier.html */
+:root {
+  --rosa: #FDC8BC;
+  --cafe: #974615;
+  --terracota: #AF643B;
+  --coral: #FF5757;
+  --crema: #FBF7EE;
+  --negro: #141414;
+  --gris-linea: #706F6B;
+  --texto: #2A1A10;
+  --texto-suave: #6E5446;
+  --regla: #E6D6C8;
+
+  --f-nombre: 'Archivo Variable', 'Arial Black', Arial, sans-serif;
+  --f-titular: 'Anton', Impact, 'Arial Narrow', sans-serif;
+  --f-texto: 'Inter Variable', 'Helvetica Neue', Arial, sans-serif;
+
+  --gutter: clamp(16px, 4vw, 48px);
+  --ancho: 1200px;
+  --alto-barra: 92px;
+  --alto-tabbar: 64px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body {
+  margin: 0;
+  background: var(--crema);
+  color: var(--texto);
+  font: 400 16px/1.55 var(--f-texto);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { text-wrap: balance; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--cafe); outline-offset: 3px; }
+
+.visualmente-oculto {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+.saltar {
+  position: absolute; left: 16px; top: -60px; z-index: 100;
+  background: var(--negro); color: #fff; padding: 10px 14px; text-decoration: none;
+}
+.saltar:focus { top: 12px; }
+
+.ico { width: 22px; height: 22px; flex: none; }
+.etq {
+  font: 700 12px/1 var(--f-nombre);
+  letter-spacing: .2em; text-transform: uppercase; color: var(--terracota);
+}
+
+/* ---------- Lockup ---------- */
+.retrato { display: block; aspect-ratio: 1000 / 1070; fill: currentColor; }
+.lockup {
+  display: flex; align-items: center; gap: .35em;
+  color: var(--cafe); text-decoration: none; font-size: 13px;
+}
+.lockup .retrato { width: 5.2em; transition: width .25s; }
+.lk-txt { display: flex; flex-direction: column; gap: .2em; transition: opacity .2s; }
+.lk-sub {
+  font: 700 .62em/1 var(--f-nombre); letter-spacing: .22em; text-transform: uppercase;
+  color: var(--terracota); white-space: nowrap;
+}
+.lk-nom {
+  font: 800 2.05em/.9 var(--f-nombre); font-stretch: 112%;
+  text-transform: uppercase;
+}
+
+/* ---------- Botones ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 18px; text-decoration: none;
+  font: 700 13px/1 var(--f-texto); letter-spacing: .04em; text-transform: uppercase;
+  transition: background .15s, transform .15s;
+}
+.btn-wa { background: var(--cafe); color: #fff; }
+.btn-wa:hover { background: #7C3810; }
+.btn-grande { padding: 16px 22px; font-size: 14px; }
+.btn-borde { border: 2px solid var(--negro); color: var(--negro); padding: 14px 20px; }
+.btn-borde:hover { background: var(--negro); color: #fff; }
+
+/* ---------- Barra superior ---------- */
+.barra {
+  position: sticky; top: 0; z-index: 20;
+  background: var(--rosa);
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.barra-in {
+  max-width: var(--ancho); margin: 0 auto; padding: 12px var(--gutter);
+  display: flex; align-items: center; gap: 28px;
+  min-height: var(--alto-barra); transition: min-height .25s;
+}
+.menu { display: flex; gap: 24px; margin-left: auto; }
+.menu a {
+  font: 600 14px/1 var(--f-texto); color: var(--cafe); text-decoration: none;
+  padding: 6px 0; border-bottom: 2px solid transparent;
+}
+.menu a:hover, .menu a[aria-current="true"] { border-color: var(--cafe); }
+.salir {
+  display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
+  background: transparent; border: 1.5px solid rgba(151, 70, 21, .45); color: var(--cafe);
+  padding: 8px 10px; font: 600 12px/1 var(--f-texto);
+}
+.salir .ico { width: 16px; height: 16px; }
+.salir:hover { background: var(--cafe); color: #fff; }
+
+/* Al bajar, la barra se compacta y queda solo el retrato */
+.barra.compacta .barra-in { min-height: 60px; }
+.barra.compacta .lockup .retrato { width: 2.9em; }
+.barra.compacta .lk-txt { opacity: 0; width: 0; overflow: hidden; }
+
+/* ---------- Hero ---------- */
+.hero {
+  max-width: var(--ancho); margin: 0 auto;
+  padding: clamp(32px, 6vw, 64px) var(--gutter) 0;
+  display: grid; grid-template-columns: 1.05fr 1fr; gap: 24px; align-items: end;
+}
+.hero-txt { display: flex; flex-direction: column; gap: 22px; padding-bottom: 48px; }
+.hero-preg { font: 600 clamp(16px, 1.6vw, 19px)/1.5 var(--f-texto); color: #333; max-width: 46ch; }
+.hero h1 {
+  font: 400 clamp(52px, 8vw, 104px)/.98 var(--f-titular);
+  text-transform: uppercase; color: var(--negro); letter-spacing: -.005em;
+}
+.cinta {
+  align-self: flex-start; background: var(--terracota); color: #fff;
+  padding: 12px 18px; font: 700 13px/1.2 var(--f-texto); letter-spacing: .04em; text-transform: uppercase;
+}
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-jornada { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; color: #333; }
+.hero-jornada .ico { color: var(--cafe); margin-top: 1px; }
+.hero-ilus { width: 100%; height: auto; color: var(--gris-linea); fill: currentColor; }
+
+/* ---------- Servicios ---------- */
+.servicios {
+  max-width: var(--ancho); margin: 0 auto; padding: 0 var(--gutter);
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.servicios article {
+  border-top: 3px solid var(--negro); padding: 26px 28px 32px 0;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.servicios article + article { padding-left: 28px; border-left: 1px solid var(--regla); }
+.servicios h3 { font: 400 28px/1 var(--f-titular); text-transform: uppercase; color: var(--negro); }
+.servicios p { color: #4a3a30; font-size: 15px; max-width: 34ch; }
+
+/* ---------- Jornada ---------- */
+.jornada {
+  max-width: var(--ancho); margin: 0 auto; padding: 72px var(--gutter) 0;
+  display: flex; flex-direction: column; gap: 18px; align-items: flex-start;
+}
+.jornada-marco {
+  width: 100%; display: grid; grid-template-columns: 1.7fr 1fr;
+  border: 6px solid var(--negro); padding: 6px; background: #fff;
+}
+.cuando { background: var(--negro); color: #fff; padding: 28px 32px; display: flex; flex-direction: column; gap: 6px; }
+.donde { padding: 28px 32px; display: flex; flex-direction: column; gap: 4px; color: var(--negro); }
+.q { font: 500 18px/1 var(--f-nombre); font-stretch: 75%; }
+.fecha { font: 800 clamp(26px, 3.6vw, 44px)/1.05 var(--f-nombre); font-stretch: 125%; letter-spacing: .01em; }
+.hora { font: 600 19px/1.2 var(--f-nombre); font-stretch: 75%; }
+.lugar { font: 700 20px/1.2 var(--f-nombre); font-stretch: 80%; text-transform: uppercase; margin-top: 4px; }
+.comuna { font: 400 19px/1.2 var(--f-nombre); font-stretch: 80%; }
+
+/* ---------- Pasos ---------- */
+.pasos { max-width: var(--ancho); margin: 0 auto; padding: 80px var(--gutter) 0; }
+.pasos h2, .nosotras h2 {
+  font: 400 clamp(36px, 5vw, 56px)/1 var(--f-titular); text-transform: uppercase; color: var(--negro);
+  margin-bottom: 28px;
+}
+.pasos ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.pasos li { display: flex; gap: 16px; align-items: flex-start; }
+.pasos .n {
+  flex: none; display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%;
+  background: var(--rosa); color: var(--cafe); font: 400 26px/1 var(--f-titular);
+}
+.pasos b { display: block; font: 800 17px/1.25 var(--f-nombre); font-stretch: 105%; margin-bottom: 4px; }
+.pasos p { font-size: 15px; color: #4a3a30; }
+
+/* ---------- Quiénes somos ---------- */
+.nosotras {
+  max-width: var(--ancho); margin: 0 auto; padding: 88px var(--gutter) 0;
+  display: grid; grid-template-columns: 1fr 1.4fr; gap: 32px; align-items: start;
+}
+.nosotras h2 { margin: 0; }
+.nosotras-txt { display: flex; flex-direction: column; gap: 14px; max-width: 60ch; }
+.nosotras .destacado { font: 800 clamp(22px, 2.6vw, 30px)/1.2 var(--f-nombre); font-stretch: 108%; color: var(--cafe); }
+.nosotras-txt p:not(.destacado) { font-size: 17px; }
+
+/* ---------- Eloísa Zurita ---------- */
+.eloisa {
+  max-width: var(--ancho); margin: 88px auto 0; padding: clamp(28px, 5vw, 56px) var(--gutter);
+  background: var(--rosa); color: var(--cafe);
+  display: grid; grid-template-columns: minmax(0, 320px) 1fr; gap: clamp(24px, 5vw, 56px); align-items: center;
+}
+.eloisa-retrato { width: 100%; max-width: 320px; }
+.eloisa-txt { display: flex; flex-direction: column; gap: 12px; }
+.eloisa h2 { font: 800 clamp(30px, 4.4vw, 52px)/.95 var(--f-nombre); font-stretch: 115%; text-transform: uppercase; }
+.eloisa-años { font: 400 26px/1 var(--f-titular); color: var(--terracota); }
+.eloisa-txt > p:not(.etq):not(.eloisa-años):not(.fuentes) { color: #5B2A0C; font-size: 16.5px; max-width: 60ch; }
+.hitos { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 0; }
+.hitos li { display: grid; grid-template-columns: 64px 1fr; gap: 16px; padding: 10px 0; border-top: 1px solid rgba(151, 70, 21, .25); }
+.hitos b { font: 400 22px/1.1 var(--f-titular); font-variant-numeric: tabular-nums; }
+.hitos span { color: #5B2A0C; font-size: 15px; }
+.fuentes { font-size: 13px; color: #7A4A30; }
+
+/* ---------- Pie ---------- */
+.pie { background: var(--cafe); color: #fff; margin-top: 88px; }
+.pie-in {
+  max-width: var(--ancho); margin: 0 auto; padding: 32px var(--gutter);
+  display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;
+}
+.lockup-neg { color: var(--rosa); font-size: 12px; }
+.lockup-neg .lk-sub { color: #F3A48F; }
+.pie-datos { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; font: 500 16px/1.2 var(--f-nombre); font-stretch: 80%; }
+.pie-wa { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font: 700 20px/1.1 var(--f-nombre); font-stretch: 80%; text-transform: uppercase; }
+.pie-wa:hover span { text-decoration: underline; }
+
+/* ---------- Barra inferior tipo app ---------- */
+.tabbar { display: none; }
+
+@media (max-width: 860px) {
+  :root { --alto-barra: 60px; }
+  .menu, .barra-cta { display: none; }
+  .barra-in { justify-content: space-between; gap: 12px; padding-block: 8px; }
+  .lockup { font-size: 9px; }
+  .salir span { display: none; }
+  .salir { padding: 8px; }
+  .barra.compacta .lockup .retrato { width: 4.2em; }
+
+  .hero { grid-template-columns: 1fr; gap: 0; }
+  .hero-txt { padding-bottom: 8px; gap: 18px; }
+  .hero-cta .btn { width: 100%; justify-content: center; }
+  .hero-ilus { max-width: 520px; justify-self: end; }
+
+  .servicios { grid-template-columns: 1fr; }
+  .servicios article, .servicios article + article { padding: 20px 0 22px; border-left: 0; }
+  .servicios article + article { border-top-width: 1px; border-top-color: var(--regla); }
+
+  .jornada { padding-top: 48px; }
+  .jornada-marco { grid-template-columns: 1fr; border-width: 4px; padding: 4px; }
+  .cuando, .donde { padding: 20px; }
+  .jornada .btn { width: 100%; justify-content: center; }
+
+  .pasos { padding-top: 56px; }
+  .pasos ol { grid-template-columns: 1fr; gap: 20px; }
+  .nosotras { grid-template-columns: 1fr; padding-top: 56px; gap: 18px; }
+  .eloisa { grid-template-columns: 1fr; margin-top: 56px; }
+  .eloisa-retrato { max-width: 200px; }
+
+  .pie { margin-top: 56px; padding-bottom: calc(var(--alto-tabbar) + env(safe-area-inset-bottom, 0px)); }
+  .pie-datos { align-items: flex-start; }
+
+  .tabbar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+    display: grid; grid-template-columns: repeat(5, 1fr); align-items: end;
+    background: #fff; border-top: 1px solid var(--regla);
+    box-shadow: 0 -6px 20px -12px rgba(60, 20, 0, .35);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    height: calc(var(--alto-tabbar) + env(safe-area-inset-bottom, 0px));
+  }
+  .tab {
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 4px;
+    height: var(--alto-tabbar); padding-bottom: 8px; text-decoration: none;
+    font: 600 11px/1 var(--f-texto); color: #8A7568;
+  }
+  .tab[aria-current="true"] { color: var(--cafe); }
+  .tab[aria-current="true"] .ico { stroke-width: 2.4; }
+  .retrato-ico { width: 24px; height: 24px; }
+  .tab-wa { color: var(--cafe); }
+  .burbuja {
+    display: grid; place-items: center; width: 62px; height: 62px; margin-top: -30px; border-radius: 50%;
+    background: var(--cafe); color: #fff; border: 4px solid #fff;
+    box-shadow: 0 6px 16px -6px rgba(60, 20, 0, .55);
+  }
+  .burbuja .ico { width: 28px; height: 28px; }
+  .tab-wa:active .burbuja { transform: scale(.95); }
+}

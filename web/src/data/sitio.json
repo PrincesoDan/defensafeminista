@@ -1,0 +1,15 @@
+{
+  "nombre": "Defensoría Popular Eloísa Zurita",
+  "dominio": "defensoriafeminista.cl",
+  "whatsapp": "56956327225",
+  "whatsappVisible": "+56 9 5632 7225",
+  "jornada": {
+    "dia": "Sábado 3 de octubre",
+    "fechaISO": "2026-10-03",
+    "horario": "15 a 18 hrs.",
+    "horaInicio": "15:00",
+    "horaFin": "18:00",
+    "lugar": "Manuela Errázuriz",
+    "comuna": "Pedro Aguirre Cerda"
+  }
+}

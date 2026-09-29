@@ -9,13 +9,9 @@ const alScroll = () => barra.classList.toggle('compacta', window.scrollY > 80);
 window.addEventListener('scroll', alScroll, { passive: true });
 alScroll();
 
-// Salida rápida: reemplaza esta página en el historial y abre Google.
-document.querySelectorAll('[data-salir]').forEach((boton) =>
-  boton.addEventListener('click', () => window.location.replace('https://www.google.cl')),
-);
-
 // Marca la pestaña y el enlace del menú de la sección visible.
-const enlaces = [...document.querySelectorAll('[data-tab], .menu a')];
+// Solo los enlaces a secciones de esta misma página (href="#...").
+const enlaces = [...document.querySelectorAll('[data-tab], .menu a[href^="#"]')];
 const marcar = (id) => {
   for (const a of enlaces) {
     const destino = a.dataset.tab ?? document.querySelector(a.getAttribute('href'))?.dataset.seccion;

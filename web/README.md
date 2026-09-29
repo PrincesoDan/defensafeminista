@@ -1,6 +1,6 @@
 # Sitio · Defensoría Popular Eloísa Zurita
 
-Sitio de una página para **defensoriafeminista.cl**, hecho con Vite (HTML + CSS + JS, sin framework de interfaz).
+Sitio para **defensoriafeminista.cl**, hecho con Vite (HTML + CSS + JS, sin framework de interfaz).
 El diseño sale del dossier `../brand/eloisa-zurita-dossier.html` y el plan de `../Defensoria popular y feminista-*/Defensoria popular y feminista/plan.md`.
 
 ## Requisitos
@@ -26,9 +26,11 @@ La imagen para compartir `public/og.png` tiene la fecha escrita: si cambia la jo
 
 | Archivo | Qué es |
 |---|---|
-| `index.html` | Toda la página. `{{clave}}` son datos, `{{icon:nombre}}` son íconos (lucide-static / simple-icons) |
+| `eloisa-zurita/index.html` | Página Eloísa Zurita con su biografía |
+| `quienes-somos/index.html` | Página Quiénes somos y principios (misma barra, pie y datos que el inicio) |
+| `index.html` | Página de inicio. `{{clave}}` son datos, `{{icon:nombre}}` son íconos (lucide-static / simple-icons) |
 | `src/style.css` | Colores, tipografías y diseño del dossier |
-| `src/main.js` | Barra que se compacta, pestaña activa y botón de salida rápida |
+| `src/main.js` | Barra que se compacta y pestaña activa |
 | `src/assets/retrato.svg`, `ilustracion.svg` | Retrato e ilustración vectorizados (`fill="currentColor"`) |
 | `scripts/assets.mjs` | Regenera esos SVG desde `assets-src/` (`npm run assets`) |
 | `public/` | Favicon, ícono de iPhone, ícono 512 e imagen para compartir (`og.png`) |

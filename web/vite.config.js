@@ -4,7 +4,7 @@ import { resolve } from 'node:path';
 
 const leer = (ruta) => readFileSync(resolve(import.meta.dirname, ruta), 'utf8');
 
-// Arma los datos que se reemplazan en index.html como {{clave}}.
+// Arma los datos que se reemplazan en las páginas como {{clave}}.
 // Para cambiar la jornada se edita solo src/data/sitio.json.
 function datosDelSitio() {
   const sitio = JSON.parse(leer('src/data/sitio.json'));
@@ -54,7 +54,7 @@ function icono(nombre) {
     .trim();
 }
 
-// Sprite con el retrato y la ilustración como <symbol>, para reutilizarlos con <use>.
+// Sprite con el retrato como <symbol>, para reutilizarlos con <use>.
 function sprite() {
   const simbolo = (id, archivo) => {
     const svg = leer(archivo);
@@ -62,7 +62,7 @@ function sprite() {
     const cuerpo = svg.replace(/^[\s\S]*?<svg[^>]*>/, '').replace(/<\/svg>\s*$/, '');
     return `<symbol id="${id}" viewBox="${viewBox}">${cuerpo}</symbol>`;
   };
-  return `<svg width="0" height="0" style="position:absolute" aria-hidden="true">${simbolo('retrato', 'src/assets/retrato.svg')}${simbolo('ilus', 'src/assets/ilustracion.svg')}</svg>`;
+  return `<svg width="0" height="0" style="position:absolute" aria-hidden="true">${simbolo('retrato', 'src/assets/retrato.svg')}</svg>`;
 }
 
 function plantilla() {
@@ -80,4 +80,13 @@ function plantilla() {
 
 export default defineConfig({
   plugins: [plantilla()],
+  build: {
+    rollupOptions: {
+      input: {
+        inicio: resolve(import.meta.dirname, 'index.html'),
+        quienesSomos: resolve(import.meta.dirname, 'quienes-somos/index.html'),
+        eloisaZurita: resolve(import.meta.dirname, 'eloisa-zurita/index.html'),
+      },
+    },
+  },
 });

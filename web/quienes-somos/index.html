@@ -6,16 +6,26 @@
   <title>Quiénes somos · {{nombre}}</title>
   <meta name="description" content="Somos abogadas feministas. Conoce a la {{nombre}} y los principios que guían nuestro trabajo.">
   <meta name="theme-color" content="#FDC8BC">
-  <link rel="canonical" href="https://{{dominio}}/quienes-somos/">
+  <link rel="canonical" href="{{url}}/quienes-somos/">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{nombre}}">
   <meta property="og:locale" content="es_CL">
   <meta property="og:title" content="Quiénes somos · {{nombre}}">
   <meta property="og:description" content="Somos abogadas feministas. Conoce nuestros principios.">
-  <meta property="og:url" content="https://{{dominio}}/quienes-somos/">
-  <meta property="og:image" content="https://{{dominio}}/og.png">
+  <meta property="og:url" content="{{url}}/quienes-somos/">
+  <meta property="og:image" content="{{url}}/og.png">
+  <meta property="og:image:secure_url" content="{{url}}/og.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{nombre}}: orientación legal gratuita para mujeres">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Quiénes somos · {{nombre}}">
+  <meta name="twitter:description" content="Somos abogadas feministas. Conoce nuestros principios.">
+  <meta name="twitter:image" content="{{url}}/og.png">
+  <script type="application/ld+json">{{organizacionJsonLd}}</script>
   <script type="module" src="/src/main.js"></script>
 </head>
 <body>

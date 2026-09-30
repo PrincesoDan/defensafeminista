@@ -22,6 +22,9 @@ La fecha, el lugar, el mensaje precargado de WhatsApp, los metadatos y el evento
 
 La imagen para compartir `public/og.png` tiene la fecha escrita: si cambia la jornada, hay que regenerarla.
 
+Al compilar también se generan `robots.txt`, `sitemap.xml` y `llms.txt` (para buscadores y LLM) desde `sitio.json`.
+`url` en `sitio.json` es la dirección oficial (canónica) y debe coincidir con el dominio principal en Vercel.
+
 ## Estructura
 
 | Archivo | Qué es |
@@ -33,7 +36,9 @@ La imagen para compartir `public/og.png` tiene la fecha escrita: si cambia la jo
 | `src/main.js` | Barra que se compacta y pestaña activa |
 | `src/assets/retrato.svg`, `ilustracion.svg` | Retrato e ilustración vectorizados (`fill="currentColor"`) |
 | `scripts/assets.mjs` | Regenera esos SVG desde `assets-src/` (`npm run assets`) |
-| `public/` | Favicon, ícono de iPhone, ícono 512 e imagen para compartir (`og.png`) |
+| `404.html` | Página para direcciones que no existen |
+| `vercel.json` | Redirecciones de direcciones mal escritas (`/quienessomos` → `/quienes-somos/`, etc.) |
+| `public/` | Favicon, ícono de iPhone, ícono 512 e imagen para compartir (`og.png`, 1200×630) |
 
 ## Publicar
 

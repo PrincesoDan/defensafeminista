@@ -1,0 +1,15 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/quienessomos", "destination": "/quienes-somos/", "permanent": true },
+    { "source": "/quienes_somos", "destination": "/quienes-somos/", "permanent": true },
+    { "source": "/quienes", "destination": "/quienes-somos/", "permanent": true },
+    { "source": "/nosotras", "destination": "/quienes-somos/", "permanent": true },
+    { "source": "/principios", "destination": "/quienes-somos/#principios", "permanent": true },
+    { "source": "/eloisazurita", "destination": "/eloisa-zurita/", "permanent": true },
+    { "source": "/eloisa", "destination": "/eloisa-zurita/", "permanent": true },
+    { "source": "/jornada", "destination": "/#jornada", "permanent": true },
+    { "source": "/agendar", "destination": "/#como-agendar", "permanent": true }
+  ]
+}
